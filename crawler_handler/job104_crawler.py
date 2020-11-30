@@ -15,7 +15,7 @@ headers = {
 }
 
 
-def get_new_jobs_info():
+def get_new_104jobs_info():
     try:
         res = requests.get(url, headers=headers)
         jobs_info = res.json()
@@ -23,7 +23,7 @@ def get_new_jobs_info():
         print(ex)
         return
 
-    result = db.fetchAll("SELECT demandId FROM job_list")
+    result = db.fetchAll("SELECT demandId FROM job104_list")
 
     for job_data in jobs_info["data"]:
         if job_data["assignPlace"] is not None:
@@ -43,7 +43,7 @@ def get_new_jobs_info():
             price_range = f"論件 NT$ {format(min_price, ',')} ~ {format(max_price, ',')} 元" if unit == 0 else f"時薪 NT$ {min_price} ~ {max_price} 元"
             basicId = job_data["basicId"]
 
-            db.execute("INSERT INTO job_list (demandId, title, min_price, max_price, online_date, info_data) VALUES (%s, %s, %s, %s, %s, %s)", (demandId, title, min_price, max_price, online_date, json.dumps(job_data)))
+            db.execute("INSERT INTO job104_list (demandId, title, min_price, max_price, online_date, info_data) VALUES (%s, %s, %s, %s, %s, %s)", (demandId, title, min_price, max_price, online_date, json.dumps(job_data)))
             interval_line = '=' * 25 + "\n"
-            send_broadcast_message(f"💼 有新的案件機會囉！\n\n【{title}】\n{price_range}\n連結: https://top.104.com.tw/caseInfo?basicId={basicId}&demandId={demandId}\n{interval_line}{desc}\n{interval_line}{online_date}")
+            send_broadcast_message(f"💼 104有新的案件機會囉！\n\n【{title}】\n{price_range}\n連結: https://top.104.com.tw/caseInfo?basicId={basicId}&demandId={demandId}\n{interval_line}{desc}\n{interval_line}{online_date}")
             print(f"[{time.strftime('%H:%M:%S')}] 新的案件機會已通知並加進資料庫中: ", "[" + demandId + "]", title)
