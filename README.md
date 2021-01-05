@@ -1,7 +1,7 @@
 # crawlerAlert_LineBot
 
 ## 說明
-使用網路爬蟲技術，抓取104高手上最新的案件工作機會、從Trading Central抓取最新的期貨交易策略資訊
+使用網路爬蟲技術，抓取104高手、Pro360上最新的案件工作機會、從Trading Central抓取最新的期貨交易策略資訊
 
 ## 成品圖  
 ![](https://github.com/minobear/crawlerAlert_LineBot/blob/main/preview_imgs/2a3e7f28683c5c99b0bedd99b636be31f9379bb23dfb3305e508eb34c07e56fb956989fe6bc7439ad53c7d82248c9223701322bbef7446ac27698dbd2ff22461.png)
