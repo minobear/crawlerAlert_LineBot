@@ -2,7 +2,7 @@ import random
 import time
 
 from crawler_handler.job104_crawler import get_new_104jobs_info
-from crawler_handler.market_crawler import update_access_token, get_new_market_info
+from crawler_handler.market_crawler import update_access_token
 from crawler_handler.pro360_crawler import get_new_pro360_info
 
 if __name__ == '__main__':

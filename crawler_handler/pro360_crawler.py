@@ -45,5 +45,5 @@ def get_new_pro360_info():
             online_date = QuoteRequest["created"]
             interval_line = '=' * 25 + "\n"
             send_broadcast_message(f"💼 Pro360有新的案件機會囉！\n\n類型: {title}\n聯繫費用: ${manual_fee}\n剩餘名額: {bid_count_remaining} / {bid_count_limit}\n連結: https://www.pro360.com.tw/dashboard/requests/{id}\n{interval_line}{content}\n{interval_line}{online_date}")
-            db.execute("INSERT INTO pro360_list VALUES (%s,%s,%s)", (id,current_milli_time(), form_summary))
+            db.execute("INSERT INTO pro360_list VALUES (?, ?, ?)", (id, current_milli_time(), form_summary))
             print(f"[{time.strftime('%H:%M:%S')}] 新的案件機會已通知並加進資料庫中: ", "[" + id + "]", title)
